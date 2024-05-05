@@ -1,0 +1,19 @@
+DB_URI = 
+
+PORT = 
+
+SECRET_KEY = 
+
+BASE_URL = 
+
+HOST = 
+
+SERVICE = 
+
+EMAIL_PORT = 
+
+SECURE = 
+
+USER = 
+
+PASS = 
