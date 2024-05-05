@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     user.randomStringExpires = randomStringExpires;
     await user.save();
 
-    const resetLink = `${process.env.BASE_URL}/verifyRandomString/${randomString}`;
+    const resetLink = `${process.env.FRONTEND_BASE_URL}/verifyRandomString/${randomString}`;
 
     // HTML content with a clickable button
     const htmlContent = `
@@ -41,13 +41,15 @@ router.post("/", async (req, res) => {
     </a>
   `;
 
-    await sendEmail(user.email, "[^_^!] ABC GOLD - Password Reset", htmlContent);
-    res
-      .status(200)
-      .json({
-        message: "Password reset link sent to your email ",
-        randomString: randomString,
-      });
+    await sendEmail(
+      user.email,
+      "[^_^!] ABC GOLD - Password Reset",
+      htmlContent
+    );
+    res.status(200).json({
+      message: "Password reset link sent to your email ",
+      randomString: randomString,
+    });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
